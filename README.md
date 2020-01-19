@@ -1,5 +1,5 @@
 # originalPlatform
-#### Is a platform for management clients.
+#### A platform for management clients.
 
 ## Documentation
 ### Usage
