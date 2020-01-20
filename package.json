@@ -1,0 +1,50 @@
+{
+  "name": "originalplatform",
+  "version": "1.0.0",
+  "description": "## Documentation ### Usage",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
+    "migrate:createClientsTable": "sequelize model:create --name Clients --attributes email:string",
+    "migrate:createZipCodesTable": "sequelize model:create --name ZipCodes --attributes zipCode:string",
+    "migrate:undo": "sequelize db:migrate:undo",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --testTimeout=10000",
+    "pretest": "cross-env NODE_ENV=test npm run migrate:reset"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Junior743/originalPlatform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/Junior743/originalPlatform/issues"
+  },
+  "homepage": "https://github.com/Junior743/originalPlatform#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "busca-cep": "^0.5.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.4.2",
+    "pg": "^7.17.1",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
+  }
+}
