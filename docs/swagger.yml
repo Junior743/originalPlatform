@@ -1,0 +1,191 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Original API"
+  contact:
+    email: "carloshenriquesousajunior@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "Original API"
+  externalDocs:
+    description: "Find out more"
+    url: "https://github.com/Junior743/originalPlatform"
+schemes:
+- "http"
+paths:
+  /clients:
+    post:
+      tags:
+      - "clients"
+      summary: "Add a new client"
+      description: ""
+      operationId: "addClient"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Client"
+      responses:
+        201:
+          description: "Created"
+        405:
+          description: "Invalid input"
+  /clients/{email}:
+    put:
+      tags:
+      - "clients"
+      summary: "Update an existing client"
+      description: ""
+      operationId: "updateClient"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "path"
+        required: true,
+        type: "string"
+      responses:
+        204:
+          description: "Updated"
+        400:
+          description: "Client not found"
+    delete:
+      tags:
+      - "clients"
+      summary: "Delete an existing client"
+      description: ""
+      operationId: "deleteClient"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "path"
+        required: true,
+        type: "string"
+      responses:
+        204:
+          description: "Deleted"
+        400:
+          description: "Client not found"
+  /clients/check/{email}:
+    get:
+      tags:
+      - "clients"
+      summary: "Check if client exists"
+      description: ""
+      operationId: "checkClient"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "path"
+        required: true,
+        type: "string"
+      responses:
+        200:
+          description: "Finded"
+        400:
+          description: "Client not found"
+  /clients/{email}/zipcodes:
+    post:
+      tags:
+      - "clients"
+      summary: "Add a new zip code"
+      description: ""
+      operationId: "addZipCode"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ZipCode"
+      responses:
+        201:
+          description: "Created"
+        405:
+          description: "Invalid input"
+  /clients/{email}/zipcodes/{zipcode}:
+    delete:
+      tags:
+      - "clients"
+      summary: "Delete an existing zip code"
+      description: ""
+      operationId: "deleteZipCode"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "path"
+        required: true,
+        type: "string"
+      - name: "zipcode"
+        in: "path"
+        required: true,
+        type: "string"
+      responses:
+        204:
+          description: "Deleted"
+        400:
+          description: "Zip code not found"
+definitions:
+  Client:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      cpf:
+        type: "string"
+      telefone:
+        type: "string"
+      celular:
+        type: "string"
+    xml:
+      name: "Order"
+  ClientPut:
+    type: "object"
+    properties:
+      telefone:
+        type: "string"
+      celular:
+        type: "string"
+    xml:
+      name: "Order"
+  ZipCode:
+    type: "object"
+    properties:
+      zipCode:
+        type: "string"
+    xml:
+      name: "Category"
+externalDocs:
+  description: "Find out more about Original API"
+  url: "https://github.com/Junior743/originalPlatform"
